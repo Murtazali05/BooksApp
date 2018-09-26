@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org/"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+
+<head th:replace="fragments/head :: head(title='Административная панель')"></head>
+
+<body>
+
+<header th:replace="fragments/header :: header"></header>
+
+<section class="main_content">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-3">
+
+                <div th:replace="admin/menu :: menu (user=${user})"></div>
+
+            </div>
+            <div class="col-md-9">
+                <div class="content clearfix">
+                    <h2>Список пользователей</h2>
+
+                    <table class="admin_table admin_user_table">
+                        <tr>
+                            <th>Фото</th>
+                            <th>Имя</th>
+                            <th>email</th>
+                            <th>Статус</th>
+                            <th sec:authorize="hasRole('ADMIN')">Изменить</th>
+                            <th sec:authorize="hasRole('ADMIN')"></th>
+                        </tr>
+                        <tr th:each="person : ${users}">
+                            <td class="td_img"><img th:src="@{/images/avatar/{ava}(ava=${person.linkAvatarka})}" alt="alt" /></td>
+                            <td th:text="${person.name}"></td>
+                            <td th:text="${person.email}"></td>
+                            <td th:if="${person.idRole == 2}">Модератор</td>
+                            <td th:if="${person.idRole == 1}">Администратор</td>
+                            <td th:if="${person.idRole == 3}">Пользователь</td>
+
+                            <td sec:authorize="hasRole('ADMIN')">
+                                <a th:if="${person.idRole == 3}" th:href="@{/admin/makeModerator/{id}(id=${person.id})}">Назначить модератором</a>
+                                <a th:if="${person.idRole == 2}" th:href="@{/admin/makeUser/{id}(id=${person.id})}">Убрать из администрации</a>
+                                <span th:if="${person.idRole == 1}">Не изменять!</span>
+                            </td>
+
+                            <td sec:authorize="hasRole('ADMIN')" class="td_link">
+                                <a th:href="@{/admin/deleteUser/{id}(id=${person.id})}"><i class="fa fa-trash" aria-hidden="true"></i></a>
+                            </td>
+
+                        </tr>
+                    </table>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<footer th:replace="fragments/footer :: footer"></footer>
+
+<div class="upstairs">
+    <a href="#header"><i class="fa fa-angle-up"></i></a>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+<script src="/libs/magnific-popup/jquery.magnific-popup.min.js"></script>
+<script src="/js/common.js"></script>
+</body>
+</html>

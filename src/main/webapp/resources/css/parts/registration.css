@@ -1,0 +1,84 @@
+
+/* Верстка страницы регистрации */
+
+.content form.registration {
+    width: 350px;
+    margin: 0 auto;
+    text-align: left;
+}
+
+.content form.registration div{
+    margin-bottom: 20px;
+}
+
+.content form.registration h3{
+    text-align: center;
+    font-size: 20px;
+    margin-bottom: 25px;
+}
+
+.content form.registration label{
+    font-weight: bold;
+}
+
+.content form.registration .field label,
+.content form.registration .field input{
+    line-height: 35px;
+    vertical-align: middle;
+}
+
+.registration .field input
+{
+    float: right;
+    padding-left: 10px;
+    width: 190px;
+    height: 35px;
+    border: 1px solid #aaaaaa;
+    border-radius: 2px;
+    font-family: 'Open Sans';
+    font-size: 14px;
+    font-weight: normal;
+    outline: none;
+    color: #333333;
+}
+
+.content form.registration button{
+    width: 190px;
+    padding: 10px 25px;
+    margin-top: 11px;
+    float: right;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.4);
+}
+
+.content form.registration button:active, .content form.registration button:hover{
+    background-color: rgb(212,75,56);
+}
+
+.content form.registration button:active{
+    box-shadow: none;
+}
+
+.content form.registration button.button:disabled {
+    cursor: not-allowed !important;
+    background-color: #d8d8d8 !important;
+    -webkit-box-shadow: none !important;
+    box-shadow: none !important;
+}
+
+.content form.registration #check{
+    float: right;
+    width: 190px;
+}
+
+.content form.registration #check input[type="checkbox"]{
+    margin-right: 5px;
+    vertical-align: top;
+}
+
+.content form.registration #check label{
+    color: #666;
+    font-family: 'Times New Roman';
+    font-weight: normal;
+    /* font-style: italic; */
+    font-size: 14px;
+}

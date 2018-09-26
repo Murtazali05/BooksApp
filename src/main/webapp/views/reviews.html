@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org/"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+
+<head th:replace="fragments/head :: head(title='Рецензии')"></head>
+
+<body>
+
+<header th:replace="fragments/header :: header"></header>
+
+<section class="main_content">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-9">
+                <div class="content clearfix">
+
+                    <div class="reviews">
+                        <h3 class="head_reviews">Лучшие рецензии</h3>
+                        <div th:each="comment : ${comments}">
+                            <div class="review" th:classappend="${comment.attitude}">
+                                <button sec:authorize="isAuthenticated()" th:if="(${#authorization.expression('hasAnyRole(''ADMIN'',''MODERATOR'')')}) or (${user.email}==${comment.user.email})" id="close" class="close" th:value="${comment.id}"></button>
+
+                                <img th:src="@{/images/avatar/{pic}(pic=${comment.user.linkAvatarka})}" alt="alt" />
+
+                                <div class="right_head_com">
+                                    <p class="review_head_user"><a href="#" th:text="${comment.user.name}"></a></p>
+                                    <p class="review_head_book">на книгу «<a th:href="@{/book/{id}(id=${comment.book.id})}" th:text="${comment.book.title}"></a>»</p>
+                                </div>
+
+                                <p class="head_review" th:text="${comment.title}"></p>
+                                <p class="txt_comment" th:text="${comment.content}"></p>
+                                <p class="date" th:text="${comment.createDate}"></p>
+
+                                <div class="vote">
+                                    <span sec:authorize="!isAuthenticated()" class="unauthorized">
+                                        <button th:value="${comment.id}"><i class="fa fa-thumbs-up" aria-hidden="true"></i></button>
+                                        <span th:text="${comment.countLike}"></span>
+                                    </span>
+                                    <span sec:authorize="isAuthenticated()" class="like">
+                                        <button th:value="${comment.id}"><i class="fa fa-thumbs-up" aria-hidden="true"></i></button>
+                                        <span id="count_like" th:text="${comment.countLike}"></span>
+                                    </span>
+                                    &nbsp;
+
+                                    <span sec:authorize="!isAuthenticated()" class="unauthorized">
+                                        <button th:value="${comment.id}"><i class="fa fa-thumbs-down" aria-hidden="true"></i></button>
+                                        <span th:text="${comment.countDislike}"></span>
+                                    </span>
+                                    <span sec:authorize="isAuthenticated()" class="dislike">
+                                        <button th:value="${comment.id}"><i class="fa fa-thumbs-down" aria-hidden="true"></i></button>
+                                        <span id="count_dislike" th:text="${comment.countDislike}"></span>
+                                    </span>
+                                    &nbsp;
+                                </div>
+
+                                <div class="clearfix"></div>
+
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <div class="reviews_bottom"> </div>
+
+                </div>
+            </div>
+
+            <div class="col-md-3">
+                <aside class="sidebar clearfix">
+                    <nav class="main_menu">
+                        <ul>
+                            <li th:each="category : ${categories}">
+                                <a th:href="@{/{url}(url=${category.urlCategory})}" th:text="${category.name}"></a>
+                            </li>
+                        </ul>
+                    </nav>
+                </aside>
+            </div>
+        </div>
+    </div>
+</section>
+
+<footer th:replace="fragments/footer :: footer"></footer>
+
+<div class="upstairs">
+    <a href="#header"><i class="fa fa-angle-up"></i></a>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+<script src="/libs/magnific-popup/jquery.magnific-popup.min.js"></script>
+<script src="/js/common.js"></script>
+<script src="/js/А как .js"></script>
+</body>
+</html>

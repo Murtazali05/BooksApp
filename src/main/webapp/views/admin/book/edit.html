@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org/"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+
+<head th:replace="fragments/head :: head(title='Административная панель')"></head>
+
+<body>
+
+<header th:replace="fragments/header :: header"></header>
+
+<section class="main_content">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="content clearfix">
+
+                    <h2>Добавление книги</h2>
+
+                    <form action="#" th:action="@{/admin/book/save}" method="POST" th:object="${book}" class="user_form">
+                        <input type="hidden" th:field="*{id}" />
+                        <p>
+                            <label for="title">Заголовок</label><br />
+                            <input type="text" name="title" id="title" th:field="*{title}" required="required" />
+                        </p>
+
+                        <p>
+                            <label for="description">Описание</label><br />
+                            <textarea name="description" id="description" th:field="*{description}" cols="30" rows="10"  required="required"></textarea>
+                        </p>
+
+                        <p>
+                            <label for="pubyear">Год издания</label><br />
+                            <input type="text" name="pubyear" id="pubyear" th:field="*{pubyear}" required="required" />
+                        </p>
+
+                        <p>
+                            <label for="file">Выбрать картинку</label><br />
+                            <input type="file" name="file" id="file" th:field="*{pic}" required="required" />
+                        </p>
+
+                        <p>
+                            <label for="link">Ссылка на загрузку книги</label><br />
+                            <input type="text" name="link" id="link" th:field="*{link}" required="required" />
+                        </p>
+                        <p>
+                            <label for="link_shop">Ссылка на покупку книги</label><br />
+                            <input type="text" name="link_shop" id="link_shop" th:field="*{linkShop}" required="required" />
+                        </p>
+
+                        <p>
+                            <label for="authors">Выберите автора</label><br />
+
+                            <select id="authors" name="authors" multiple="multiple" th:field="*{authorsId}">
+                                <option th:each="author : ${authors}"
+                                        th:value="${author.id}"
+
+                                        th:text="${author.fio}">Null</option>
+                            </select>
+                        </p>
+
+                        <p>
+                            <label for="categories">Выберите категорию</label><br />
+
+                            <select id="categories" name="categories" multiple="multiple" th:field="*{categoriesId}">
+                                <option th:each="category : ${categories}"
+                                        th:value="${category.id}"
+
+                                        th:text="${category.name}">Null</option>
+                            </select>
+                        </p>
+                        <p>
+                            <button type="submit" name="createBook" class="button">Сохранить</button>
+                        </p>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<footer th:replace="fragments/footer :: footer"></footer>
+
+<div class="upstairs">
+    <a href="#header"><i class="fa fa-angle-up"></i></a>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+<script src="/libs/magnific-popup/jquery.magnific-popup.min.js"></script>
+<script src="/js/common.js"></script>
+</body>
+</html>

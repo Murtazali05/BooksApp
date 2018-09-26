@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org/">
+
+<head th:replace="fragments/head :: head(title=${user.name})"></head>
+
+<body>
+
+<header th:replace="fragments/header :: header"></header>
+
+<section class="main_content">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-3">
+
+                <nav th:replace="fragments/nav-user :: nav-user (user=${user}, shelves=${shelves})"></nav>
+
+            </div>
+            <div class="col-md-9">
+                <div class="content clearfix">
+
+                    <h2 th:text="${shelf.name}"></h2>
+
+                    <h4 align="center" th:if="${books.isEmpty()}">Вы еще не добавили книг на эту полку</h4>
+
+                    <div th:unless="${books.isEmpty()}" th:each="book, stat : ${books}">
+                        <div class="book">
+                            <a th:href="@{/book/{value}(value=${book.id})}">
+                                <img th:src="@{/images/book/{pic}(pic=${book.pic})}" alt="alt" />
+                                <div class="book_inf" th:inline="text">
+                                    <p>[[${book.title}]]</p>
+                                </div>
+                            </a>
+                        </div>
+                        <div th:if="${stat.count} % 3 == 0" class="clearfix"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<footer th:replace="fragments/footer :: footer"></footer>
+
+<div class="upstairs">
+    <a href="#header"><i class="fa fa-angle-up"></i></a>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+<script src="/libs/magnific-popup/jquery.magnific-popup.min.js"></script>
+<script src="/js/common.js"></script>
+</body>
+</html>

@@ -1,0 +1,14 @@
+<div th:fragment="nav-user (user, shelves)" class="user_left_menu clearfix" xmlns:th="http://www.w3.org/1999/xhtml">
+    <h3 th:text="${user.name}"></h3>
+    <hr />
+    <img th:src="@{/images/avatar/{pic}(pic=${user.linkAvatarka})}" alt="alt" />
+    <a href="/user/edit" class="ava">Редактировать</a>
+
+    <ul>
+        <li><a href="/user">Общая информация</a></li>
+        <li th:each="shelf : ${shelves}">
+            <a th:href="@{/user/shelf{id}(id=${shelf.id})}" th:text="${shelf.name}"></a>
+        </li>
+        <li><a href="/logout">Выйти</a></li>
+    </ul>
+</div>

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org/">
+
+<head th:replace="fragments/head :: head('Ошибка 404')"></head>
+
+<body>
+
+<header th:replace="fragments/header :: header"></header>
+
+<section class="main_content">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="content content-error clearfix">
+                    <h2>Ошибка 404</h2>
+                    <p>Перейти на <a href="/">главную страницу</a></p>
+                    <img src="/images/404.png" alt="alt" />
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<footer th:replace="fragments/footer :: footer"></footer>
+
+<div class="upstairs">
+    <a href="#header"><i class="fa fa-angle-up"></i></a>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+<script src="/libs/magnific-popup/jquery.magnific-popup.min.js"></script>
+<script src="/js/common.js"></script>
+</body>
+</html>

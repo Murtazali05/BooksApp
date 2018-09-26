@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org/">
+
+<head th:replace="fragments/head :: head(title='Регистрация')"></head>
+
+<body>
+
+<header th:replace="fragments/header :: header"></header>
+
+<section class="main_content">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="content clearfix">
+                    <div th:if="${error != null}" class="error" th:text="${error}"></div>
+
+                    <h2>Регистрация</h2>
+
+                    <form action="#" th:action="@{/registration}" method="POST" th:object="${user}" class="registration">
+                        <div class="field clearfix">
+                            <label for="name">Имя</label>
+                            <input type="text" id="name" name="name" th:field="*{name}" placeholder="Имя" required="required" />
+                        </div>
+
+                        <div class="field clearfix">
+                            <label for="email">E-mail</label>
+                            <input type="email" id="email" name="email" th:field="*{email}" placeholder="Email" required="required" />
+                        </div>
+
+                        <div class="field clearfix">
+                            <label for="password">Пароль</label>
+                            <input type="password" id="password" name="password" th:field="*{password}" placeholder="Пароль" required="required" />
+                        </div>
+
+                        <div class="field clearfix">
+                            <label for="confirmPassword">Пароль еще раз</label>
+                            <input type="password" id="confirmPassword" name="confirmPassword" th:field="*{confirmPassword}" placeholder="Потверждение пароля" required="required" />
+                        </div>
+
+                        <div class="clearfix">
+                            <button type="submit" name="do_signup" id="toRegistorButton" class="button">Регистрация</button>
+                        </div>
+
+                        <div id="check" class="clearfix">
+                            <label>
+                                <input type="checkbox" id="checkbox" checked="checked" /> Я согласен на <a href="#">обработку персональных данных</a>
+                            </label>
+                        </div>
+
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<footer th:replace="fragments/footer :: footer"></footer>
+
+<div class="upstairs">
+    <a href="#header"><i class="fa fa-angle-up"></i></a>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+<script src="/libs/magnific-popup/jquery.magnific-popup.min.js"></script>
+<script src="/js/common.js"></script>
+</body>
+</html>

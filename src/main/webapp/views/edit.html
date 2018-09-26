@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org/">
+
+<head th:replace="fragments/head :: head(title=${user.name})"></head>
+
+<body>
+
+<header th:replace="fragments/header :: header"></header>
+
+<section class="main_content">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-3">
+
+                <nav th:replace="fragments/nav-user :: nav-user (user=${user}, shelves=${shelves})"></nav>
+
+            </div>
+            <div class="col-md-9">
+                <div class="content clearfix">
+
+                    <h2 class="edit_head">Редактирование персональной информации</h2>
+
+                    <form action="#" th:action="@{/user/save}" method="POST" th:object="${newUser}" class="edit">
+                        <input type="hidden" th:field="*{id}" th:value="${user.id}" />
+                        <div class="edit_ava">
+                            <img th:src="@{/images/avatar/{ava}(ava=${user.linkAvatarka})}"  alt="alt" /><br />
+                            <input type="file" name="file" th:field="*{linkAvatarka}" />
+                        </div>
+
+                        <table class="edit_info">
+                            <tr>
+                                <td><label for="name">Имя: </label></td>
+                                <td><input type="text" name="name" id="name" th:field="*{name}" required="required" /></td>
+                            </tr>
+                            <tr>
+                                <td><label for="email">E-mail:</label></td>
+                                <td><input type="email" name="email" id="email" th:field="*{email}" required="required" /></td>
+                            </tr>
+                            <tr>
+                                <td><label for="date">Год рождения:</label></td>
+                                <td><input type="date" name="date" id="date" th:field="*{birthday}" /></td>
+                            </tr>
+                            <tr>
+                                <td></td>
+                                <td><button type="submit" name="edit" class="button">Сохранить</button></td>
+                            </tr>
+                        </table>
+
+                    </form>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<footer th:replace="fragments/footer :: footer"></footer>
+
+<div class="upstairs">
+    <a href="#header"><i class="fa fa-angle-up"></i></a>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+<script src="/libs/magnific-popup/jquery.magnific-popup.min.js"></script>
+<script src="/js/common.js"></script>
+</body>
+</html>

@@ -1,0 +1,21 @@
+<div th:fragment="menu (user)" class="user_left_menu clearfix" xmlns:th="http://www.w3.org/1999/xhtml"
+     xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+
+    <h3 th:inline="text">[[${user.name}]]<br />
+        <span sec:authorize="hasRole('ADMIN')">Администратор</span>
+        <span sec:authorize="hasRole('MODERATOR')">Модератор</span>
+    </h3>
+    <hr />
+    <img th:src="@{/images/avatar/{ava}(ava=${user.linkAvatarka})}" alt="alt" />
+
+    <a href="/user/edit" class="ava">Редактировать</a>
+
+    <ul>
+        <li><a href="/admin">Пользователи</a></li>
+        <li><a href="/admin/books">Книги</a></li>
+        <li><a href="/admin/authors">Авторы</a></li>
+        <li><a href="/admin/category">Категории</a></li>
+        <li><a href="/logout">Выйти</a></li>
+    </ul>
+
+</div>

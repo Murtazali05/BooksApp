@@ -1,0 +1,887 @@
+@import "parts/header.css";
+@import "parts/footer.css";
+@import "parts/buttons.css";
+@import "parts/book.css";
+@import "parts/registration.css";
+@import "parts/user.css";
+@import "parts/blog.css";
+
+*::-webkit-input-placeholder {
+	color: #666;
+	opacity: 1;
+}
+*:-moz-placeholder {
+	color: #666;
+	opacity: 1;
+}
+*::-moz-placeholder {
+	color: #666;
+	opacity: 1;
+}
+*:-ms-input-placeholder {
+	color: #666;
+	opacity: 1;
+}
+
+body form input:focus:required:invalid,
+body form textarea:focus:required:invalid {
+	border: 1px solid #ff0000;
+}
+body form input:required:valid,
+body form textarea:required:valid {
+	border: 1px solid green;
+}
+body {
+	font-family: 'Arial', sans-serif;
+	font-size: 16px;
+	min-width: 320px;
+	position: relative;
+}
+
+html, body{
+	height: 100%;
+	width: 100%
+}
+
+body {
+	display: flex;
+	flex-direction: column;
+}
+
+.hidden {
+	display: none;
+}
+
+.content .error{
+	color: #ff0000;
+	font-weight: bold;
+	text-align: center;
+	padding-top:20px;
+	padding-bottom:20px;
+	border-bottom: 1px solid #ff0000;
+	background-color: #ffe4e4;
+}
+
+a.link-forgot{
+	display: inline-block;
+}
+
+.auth_forms p{
+	margin-top: 22px;
+}
+
+.soc_buttons {
+	padding-bottom: 21px;
+}
+
+.soc_buttons a{
+	font-size: 25px;
+	margin-left: 3px;
+}
+
+.soc_buttons .fa-vk{
+	color: #40648D;
+}
+
+.soc_buttons .fa-facebook-square{
+	color: #38559C;
+}
+
+.soc_buttons .fa-twitter-square{
+	color: #00AAF3;
+}
+
+.soc_buttons .fa-odnoklassniki-square{
+	color: #F69801;
+}
+
+
+.main_content{
+	flex: 1 0 auto;
+	background-color: #E3EBED;
+    padding-top: 38px;
+	padding-bottom: 35px;
+}
+
+.content, .sidebar{
+	background-color: #FFFFFF;
+}
+
+.content{
+	min-height: 470px;
+}
+
+.content h2{
+	font-weight: normal;
+	font-size: 26px;
+	text-align: center;
+	margin-top: 26px;
+    margin-bottom: 26px;
+}
+
+.main_menu ul {
+	list-style-type: none;
+	margin: 10px 0;
+	padding: 0;
+}
+
+.main_menu ul li a{
+	font-size: 14px;
+	color: #333;
+	display: block;
+	height: 40px;
+	padding-left: 20px;
+	padding-top: 11px;
+	transition: all .1s;
+} 
+
+.main_menu ul li a:hover, .main_menu ul li a.active{
+	background-color: #eef;
+	text-decoration: none;
+}
+
+
+.book{
+	margin: 0 40px 40px 40px;
+	float: left;
+}
+
+.book a{
+	display: block;
+	max-width: 160px;
+	height: 100%;
+	transition: all .25s;
+	border: 1px solid #dddddd;
+}
+
+.book a:hover{
+	box-shadow: 0 0 9px rgba(0,0,0,0.2);
+}
+
+.book a p{
+	font-size: 14px;
+	text-align: center;
+	padding: 6px;
+}
+
+.book a img{
+	padding: 4px;
+}
+
+
+.content .search form {
+	background: #fafafa;
+	position: relative;
+	width: 88%;
+	margin: 0 40px 35px 40px;
+}
+
+.content .search input, .content .search button {
+	border: none;
+	outline: none;
+	background: transparent;
+}
+.content .search input {
+	width: 100%;
+	height: 34px;
+	padding-left: 15px;
+	background-color: #f8f8f8;
+}
+
+.content .search input{
+	border: 1px solid #CCCCCC;
+	border-radius: 2px;
+
+}
+
+.content .search input:focus {
+	background: none;
+}
+
+.content .search button {
+	position: absolute;
+	top: 0;
+	right: -10px;
+	width: 38px;
+	height: 38px;
+	border: none;
+	background: none;
+	cursor: pointer;
+}
+.content .search button:before {
+	content: "\f002";
+	font-family: FontAwesome;
+	font-size: 16px;
+	color: #666666;
+}
+
+
+
+/* Всплывающее окно */
+.popup_form{
+	background-color: #FFFFFF;
+	text-align: right;
+	border: 1px solid #c0c0c0;
+	width: 40%;
+	border-radius: 5px;
+	margin:25px auto;
+	padding-right: 85px;
+}
+
+
+.popup_form input{
+	width: 170px;
+}
+
+.popup_form p{
+	font-family:'Roboto', sans-serif;
+	font-weight: bold;
+
+}
+.popup_form p span{
+	margin-right:15px;
+}
+
+
+.reviews input, .reviews textarea{
+	outline: none;
+	border: 1px solid #CCCCCC;
+	border-radius: 2px;
+	padding:6px 15px;
+	margin-bottom:6px;
+	margin-top:6px;
+	width: 300px;
+	color: #888888;
+}
+
+.reviews textarea{
+	resize: none;
+	height:140px;
+}
+
+.reviews input:focus, .reviews textarea:focus{
+	border: 1px solid #CCCCCC;
+}
+
+
+.reviews input[type='text']::-webkit-input-placeholder {color:#ccc;}
+.reviews input[type='text']::-moz-placeholder          {color:#ccc;}/* Firefox 19+ */
+.reviews input[type='text']:-moz-placeholder           {color:#ccc;}/* Firefox 18- */
+.reviews input[type='text']:-ms-input-placeholder      {color:#ccc;}
+
+.reviews textarea::-webkit-input-placeholder {color:#ccc;}
+.reviews textarea::-moz-placeholder      {color:#ccc;}/* Firefox 19+ */
+.reviews textarea:-moz-placeholder        {color:#ccc;}/* Firefox 18- */
+.reviews textarea:-ms-input-placeholder   {color:#ccc;}
+
+
+.listcomment{
+	padding: 0 5px 5px;
+}
+
+.listcomment h3.head_reviews, .reviews h3.head_reviews {
+	font-family: "Open Sans", sans-serif;
+	font-size: 22px;
+	font-weight: 600;
+	margin-top: 22px;
+	margin-bottom: 18px;
+	text-align: center;
+}
+
+.listcomment .comment{
+	border-top: 1px dashed #CCCCCC;
+	padding: 20px 20px;
+	position: relative;
+}
+
+
+.listcomment .comment img{
+	width: 55px;
+	height:55px;
+	border-radius: 50%;
+	display: inline-block;
+	vertical-align: middle;
+}
+
+.listcomment .comment .right_head_com{
+	display: inline-block;
+	vertical-align: middle;
+	margin-left:12px;
+}
+
+.listcomment .comment p{
+	margin:0;
+	padding:0;
+}
+
+.listcomment .comment p a{
+	font-family: 'RobotoBold';
+	font-weight:bold;
+	display: inline-block;
+	margin-top:0;
+	margin-bottom:5px;
+}
+
+.listcomment .comment p.txt_comment{
+	font-family: 'RobotoRegular';
+	font-weight:normal;
+	margin-bottom:15px;
+	margin-top:15px;
+}
+
+.listcomment .comment p.header_comment{
+	font-family: 'RobotoBold';
+	font-size:15px;
+	font-weight: bold;
+}
+
+.listcomment .comment .close, .reviews .close{
+	top: 20px;
+	right:20px;
+	border: none;
+	background: none;
+	outline: none;
+	padding:0;
+	margin:0;
+}
+
+.close {
+	position: absolute;
+	right: 0;
+	top: 0;
+	width: 13px;
+	height: 13px;
+	opacity: 0.3;
+}
+.close:hover {
+	opacity: 1;
+}
+.close:before, .close:after {
+	position: absolute;
+	left: 5px;
+	content: ' ';
+	height: 13px;
+	width: 2px;
+	background-color: #333;
+}
+.close:before {
+	transform: rotate(45deg);
+}
+.close:after {
+	transform: rotate(-45deg);
+}
+
+.listcomment p.date{
+	float: left;
+	font-family:'RobotoRegular';
+	font-weight: normal;
+	font-size:11px;
+	padding:5px 15px;
+	border-radius:30px;
+	background-color: #eee;
+}
+
+.listcomment .vote{
+	float: right;
+	color: #256AA4;
+	font-size:14px;
+	margin-top:5px;
+}
+
+.listcomment .vote button{
+	background: none;
+	border: none;
+	outline: none;
+	padding:0;
+	margin:0;
+}
+
+.listcomment .vote i.fa{
+	color: #92B5D2;
+}
+
+.listcomment .vote i.fa:hover{
+	color: #256AA4;
+}
+
+/* страница с рецензиями */
+.reviews .review{
+	position: relative;
+	padding: 25px 30px;
+	border-top: 1px solid #eeeeee;
+	background-color: #FFFFFF;
+}
+
+.reviews .neutral{
+	background-color: #F9FAFA;
+}
+
+.reviews .positive{
+	background-color: #F5FEF8;
+}
+
+.reviews .unpositive{
+	background-color: #FEF5F5;
+}
+
+.reviews_bottom{
+	height: 35px;
+	width: 100%;
+}
+
+.reviews h3.head_reviews {
+	font-family: 'RobotoBold', sans-serif;
+	font-size: 24px;
+	font-weight: bold;
+	margin-top: 35px;
+	margin-bottom: 25px;
+	text-transform: uppercase;
+}
+
+.reviews .review img{
+	width: 55px;
+	height:55px;
+	border-radius: 50%;
+	display: inline-block;
+	vertical-align: middle;
+}
+
+.reviews .review .right_head_com{
+	display: inline-block;
+	vertical-align: middle;
+	margin-left:12px;
+}
+
+.reviews .review p{
+	margin:0;
+	padding:0;
+}
+
+.reviews .review p.review_head_user a{
+	font-family:'RobotoBold';
+	font-weight:bold;
+	display: inline-block;
+	margin-top:0;
+	margin-bottom:5px;
+}
+
+.reviews .review p.review_head_book{
+	font-size:15px;
+}
+
+.reviews .review p.review_head_book a{
+	font-family:'RobotoRegular';
+	font-weight:normal;
+	font-size:15px;
+	display: inline-block;
+	margin:0;
+	text-decoration: underline;
+}
+
+.reviews .review p.review_head_book a:hover{
+	text-decoration: none;
+}
+
+.reviews .review p.txt_comment{
+	font-family:'RobotoRegular';
+	font-weight:normal;
+	margin-bottom:15px;
+	margin-top:5px;
+}
+
+.reviews .review p.head_review{
+	font-family:'RobotoBold';
+	font-size:16px;
+	font-weight: bold;
+	margin-top:10px;
+}
+
+.reviews p.date{
+	float: left;
+	font-family:'Open Sans', sans-serif;
+	font-weight: normal;
+	font-size:11px;
+	padding:5px 15px;
+	border-radius:30px;
+	background-color: #eeeeee;
+}
+
+.reviews .vote{
+	float: right;
+	color: #256AA4;
+	font-size:14px;
+	margin-top:5px;
+}
+
+.reviews .vote button{
+	background: none;
+	border: none;
+	outline: none;
+	padding:0;
+	margin:0;
+}
+
+.reviews .vote i.fa{
+	color: #92B5D2;
+}
+
+.reviews .vote i.fa:hover{
+	color: #256AA4;
+}
+
+
+.link{
+	position: relative;
+}
+
+.link ul{
+	width:210px;
+	display: none;
+	margin:0;
+	padding:15px 0;
+	position: absolute;
+	top: 45px;
+	left: -100%;
+	background-color: #3498DB;
+	list-style-type: none;
+	border-radius: 10px;
+	cursor: default;
+}
+
+.link ul li a{
+	font-family:'Roboto';
+	font-size:16px;
+	font-weight: normal;
+	color: #FFFFFF;
+	text-shadow: none;
+	display: block;
+	padding:15px 0;
+	text-align: center;
+}
+
+.link ul li a:hover{
+	background-color: #2980B9;
+}
+
+.link ul.active{
+	display: block;
+}
+
+table.admin_table{
+	max-width: 100%;
+	margin: 0 auto 40px;
+	box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+	border-radius: 3px;
+}
+
+table.admin_table th, table.admin_table td{
+	padding:8px 25px;
+	font-family:'RobotoRegular';
+	font-weight:normal;
+	font-size:15px;
+	color: #3b3b3b;
+}
+
+table.admin_table th{
+	padding:15px 25px;
+}
+
+table.admin_user_table th{
+	padding:15px 14px;
+}
+
+table.admin_user_table td{
+	padding:8px 14px;
+}
+
+table.admin_table td.td_link{
+	padding-right: 30px;
+	padding-left: 30px;
+	width: 95px;
+}
+
+table.admin_table td.td_link a{
+	color: #888;
+	display: inline-block;
+}
+
+table.admin_table td.td_img{
+	text-align: center;
+}
+
+table.admin_table td.td_img img{
+	width:60px;
+	height:60px;
+	border-radius: 50%;
+	margin: 0 auto;
+	text-align: center;
+}
+
+table.admin_table th{
+	font-weight:bold;
+	background-color: #1BB5A9;
+	color: #fafafa;
+	font-size:16px;
+}
+
+table.admin_table tr:nth-child(2n+1){
+	background-color: #E9E9E9;
+}
+
+ table.admin_table tr:nth-child(2n){
+	 background-color: #F6F6F6;
+ }
+
+.content .admin_add_button{
+	text-align: center;
+	margin: -5px auto 15px;
+}
+
+.content .admin_add_button a{
+	color: #58A3C1;
+	text-decoration: none;
+}
+
+.content .admin_add_button a:hover{
+	text-decoration: underline;
+}
+
+.content .search_head{
+	font-family:'Roboto';
+	font-size:18px;
+	font-weight: bold;
+	margin:30px 0 25px 39px;
+}
+
+.content .found_authors .search_head{
+	margin-top:0;
+	text-align: center;
+}
+
+/* Страница авторов */
+.content .author{
+	margin: 10px 60px 20px;
+	background-color: #FAF7FF;
+}
+/*
+.content .author:nth-child(2n+1){
+	background-color: #fff;
+}*/
+
+.content .author a{
+	display: block;
+	width:100%;
+	height: 100%;
+	font-family:'Roboto', sans-serif;
+	font-size:14px;
+	font-weight: bold;
+	color: #302119;
+	padding:15px 40px;
+}
+
+.content .author a:hover{
+	color: #4264fd;
+}
+
+.content .author img{
+	border-radius: 50%;
+	width: 56px;
+	height: 56px;
+}
+.content .author .author_inf{
+	display: inline-block;
+	margin-left:15px;
+	height: 56px;
+}
+
+.content .author .count_book{
+	float: right;
+}
+
+.content .author .count_book p{
+	margin-top:17px;
+}
+
+.content .authorsBook h3{
+	font-weight: normal;
+	margin-top: 25px;
+	margin-bottom: 15px;
+}
+
+.content .authorsBook .book{
+	margin: 0 20px 15px 0;
+}
+
+.content .authorsBook .book a{
+	width: 140px;
+}
+
+.content .authorsBook .book a img{
+	width: 138px;
+}
+
+.content .user_info{
+	margin-bottom:30px;
+	margin-left: 10px;
+	text-align: left;
+}
+
+.content .user_info th{
+	padding: 5px 0 5px 30px;
+	font-family:'Arial', sans-serif;
+	font-weight: normal;
+}
+
+.content .user_info th span{
+	font-weight:bold;
+	font-family:'Arial', sans-serif;
+}
+
+/* Формы редактирования и добавления */
+.user_form{
+	margin-bottom: 40px;
+	text-align: center;
+
+}
+
+.user_form input, .user_form textarea, .user_form select {
+	margin-top: 7px;
+	outline: none;
+}
+
+.user_form input[type='text'], .user_form textarea, .user_form select {
+	width: 400px;
+	padding: 6px 8px;
+	border: 1px solid #8e8e8e;
+}
+
+.user_form select{
+	padding:0;
+}
+
+.user_form textarea{
+	resize: none;
+}
+
+.user_form input:focus:required:invalid,
+.user_form textarea:focus:required:invalid,
+.user_form select:focus:required:invalid {
+	border: 1px solid red;
+}
+.user_form input:required:valid,
+.user_form textarea:required:valid,
+.user_form select:focus:required:valid {
+	border: 1px solid #8e8e8e;
+}
+.user_form input:focus:required:valid,
+.user_form textarea:focus:required:valid{
+	border: 1px solid green;
+}
+
+ .edit .edit_info input:focus:required:invalid,
+ .edit .edit_info textarea:focus:required:invalid,
+ .edit .edit_info select:focus:required:invalid {
+	 border: 1px solid red;
+ }
+.edit .edit_info input:required:valid,
+.edit .edit_info textarea:required:valid,
+.edit .edit_info select:focus:required:valid {
+	border: 1px solid #bfbfbf;
+}
+.edit .edit_info input:focus:required:valid,
+.edit .edit_info textarea:focus:required:valid{
+	border: 1px solid green;
+}
+
+.user_form button.button{
+	margin-top:5px;
+}
+
+h2.edit_head{
+	margin-top:40px;
+	margin-bottom:30px;
+}
+
+.edit table.edit_info, .edit .edit_ava{
+	display: inline-block;
+	vertical-align: top;
+}
+
+.edit .edit_ava{
+	margin:10px 25px 60px 95px;
+}
+
+.edit .edit_info{
+	background-color: #fafafa;
+	padding:16px 25px;
+	margin:10px 40px 60px 25px;
+}
+
+.edit .edit_info button.button{
+	margin-top: 10px;
+}
+
+.edit .edit_info td{
+	padding:5px;
+}
+
+.edit .edit_info input{
+	width: 210px;
+	padding: 5px 8px;
+	border: 1px solid #bfbfbf;
+	outline: none;
+}
+
+.edit .edit_ava input[type='file']{
+	font-size:11px;
+	margin-top:5px;
+}
+
+p.advice{
+	text-align: center;
+	margin-top: 0;
+	border-top: 1px dashed #CCCCCC;
+	border-bottom: 1px dashed #CCCCCC;
+	padding: 13px;
+}
+
+
+/*Вертска страницы 404*/
+.content-error {
+	text-align: center;
+    width: 700px;
+    margin: 0 auto;
+}
+
+.content-error img{
+	margin-top:10px;
+	margin-bottom:10px;
+}
+
+.content-error img.error-500{
+    margin-top: 0;
+    margin-bottom: 0;
+    border-radius: 50%;
+}
+
+/* Верстка кнопки <Наверх>*/
+.upstairs{
+	position: fixed;
+	z-index: 100;
+	bottom:40px;
+	right:105px;
+}
+
+.upstairs a{
+	width: 50px;
+	color: #374352;
+	text-align: right;
+	display: block;
+}
+
+.upstairs a i.fa{
+	font-size:32px;
+}
+
+
+

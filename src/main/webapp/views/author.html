@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org/">
+
+<head th:replace="fragments/head :: head(title=${author.fio})"></head>
+
+<body>
+
+<header th:replace="fragments/header :: header"></header>
+
+<section class="main_content">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-9">
+                <div class="content pagesbook clearfix">
+                    <h2 th:text="${author.fio}"></h2>
+                    <div class="photo">
+                        <img th:src="@{/images/authors/{pic}(pic=${author.pic})}" alt="alt" />
+                    </div>
+                    <div class="descr">
+                        <p th:text="${author.about}"></p>
+                    </div>
+                    <div class="clearfix"></div>
+
+                    <div class="authorsBook">
+                        <h3 th:inline="text">Книги автора([[${author.countBook}]]):</h3>
+
+                        <div class="book" th:each="book : ${books}">
+                            <a th:href="@{/book/{id}(id=${book.id})}">
+                                <img th:src="@{/images/book/{pic}(pic=${book.pic})}" alt="alt" />
+                                <div class="book_inf">
+                                    <p th:text="${book.title}"></p>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="col-md-3">
+                <aside class="sidebar clearfix">
+                    <nav class="main_menu">
+                        <ul>
+                            <li th:each="category : ${categories}"><a th:href="@{/{url}(url=${category.urlCategory})}" th:text="${category.name}"></a></li>
+                        </ul>
+                    </nav>
+                </aside>
+            </div>
+        </div>
+    </div>
+</section>
+
+<footer th:replace="fragments/footer :: footer"></footer>
+
+<div class="upstairs">
+    <a href="#header"><i class="fa fa-angle-up"></i></a>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+<script src="/libs/magnific-popup/jquery.magnific-popup.min.js"></script>
+<script src="/js/common.js"></script>
+</body>
+</html>

@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org/"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+
+<head th:replace="fragments/head :: head(title='Книга')"></head>
+
+<body>
+
+<header th:replace="fragments/header :: header"></header>
+
+<section class="main_content">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-9">
+                <div class="content pagesbook clearfix">
+                    <h2 th:text="${book.title}"></h2>
+
+                    <div class="photo">
+                        <img th:src="@{/images/book/{pic}(pic=${book.pic})}" alt="alt" />
+                    </div>
+                    <div class="descr">
+                        <p th:text="${book.description}"></p>
+                    </div>
+                    <div class="clearfix"></div>
+
+                    <div class="link clearfix">
+                        <a th:href="@{{link}(link=${book.linkShop})}" class="action-button shadow animate red" target="_blank">Купить</a>
+                        <a th:href="@{{link}(link=${book.link})}" class="action-button shadow animate green" target="_blank">Скачать</a>
+                        <div class="action-button shadow animate blue">
+                            +
+                            <ul>
+                                <li th:each="shelf : ${shelves}">
+                                    <a th:href="@{/book/{id}/shelf/{shelfId}(id=${book.id}, shelfId=${shelf.id})}" th:text="${shelf.name}"></a>
+                                </li>
+                            </ul>
+                        </div>
+
+                    </div>
+
+                    <div th:if="${!authors.isEmpty()}" class="authors">
+                        <p>Авторы:
+                            <span th:each="author, stat : ${authors}">
+                                <a th:href="@{/author/{id}(id=${author.id})}" th:text="${author.fio}"></a><span th:if="!${stat.last}">,</span>
+                            </span>
+                        </p>
+                    </div>
+
+                    <div class="listcomment">
+                        <h3 class="head_reviews">Рецензии читателей</h3>
+                        <div th:each="comment : ${comments}">
+                            <div class="comment">
+                                <button sec:authorize="isAuthenticated()" th:if="(${#authorization.expression('hasAnyRole(''ADMIN'',''MODERATOR'')')}) or (${user.email}==${comment.user.email})" id="close" class="close" th:value="${comment.id}"></button>
+
+                                <img th:src="@{/images/avatar/{pic}(pic=${comment.user.linkAvatarka})}" alt="alt" />
+
+                                <div class="right_head_com">
+                                    <p><a href="#" th:text="${comment.user.name}"></a></p>
+                                    <p class="header_comment" th:text="${comment.title}"></p>
+                                </div>
+                                <p class="txt_comment" th:text="${comment.content}"></p>
+                                <p class="date" th:text="${comment.createDate}"></p>
+
+                                <div class="vote">
+                                    <span sec:authorize="!isAuthenticated()" class="unauthorized">
+                                        <button th:value="${comment.id}"><i class="fa fa-thumbs-up" aria-hidden="true"></i></button>
+                                        <span th:text="${comment.countLike}"></span>
+                                    </span>
+                                    <span sec:authorize="isAuthenticated()" class="like">
+                                        <button th:value="${comment.id}"><i class="fa fa-thumbs-up" aria-hidden="true"></i></button>
+                                        <span id="count_like" th:text="${comment.countLike}"></span>
+                                    </span>
+                                    &nbsp;
+
+                                    <span sec:authorize="!isAuthenticated()" class="unauthorized">
+                                        <button th:value="${comment.id}"><i class="fa fa-thumbs-down" aria-hidden="true"></i></button>
+                                        <span th:text="${comment.countDislike}"></span>
+                                    </span>
+                                    <span sec:authorize="isAuthenticated()" class="dislike">
+                                        <button th:value="${comment.id}"><i class="fa fa-thumbs-down" aria-hidden="true"></i></button>
+                                        <span id="count_dislike" th:text="${comment.countDislike}"></span>
+                                    </span>
+                                    &nbsp;
+                                </div>
+
+                                <div class="clearfix"></div>
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <div sec:authorize="isAuthenticated()" class="reviews">
+                        <h3>Написать рецензию:</h3>
+                        <form id="add-comment" action="#" th:action="@{/saveComment}" th:object="${newComment}" method="POST">
+                            <input type="text" id="title" name="title" minlength="3" maxlength="100" th:field="*{title}" placeholder="Заголовок" required="required" /><br />
+                            <textarea id="content" name="content" minlength="100" maxlength="5000" th:field="*{content}" placeholder="Рецензия" required="required"></textarea><br />
+                            <input type="hidden" id="bookId" th:field="*{bookId}" />
+                            <button type="submit" class="green_button">Отправить</button>
+                        </form>
+
+                    </div>
+
+                    <p sec:authorize="!isAuthenticated()" class="advice"><a href="/login">Войдите</a>, чтобы написать рецензию</p>
+
+                </div>
+            </div>
+
+            <div class="col-md-3">
+                <aside class="sidebar clearfix">
+                    <nav class="main_menu">
+                        <ul>
+                            <li th:each="category : ${categories}">
+                                <a th:href="@{/{url}(url=${category.urlCategory})}" th:text="${category.name}"></a>
+                            </li>
+                        </ul>
+                    </nav>
+                </aside>
+            </div>
+        </div>
+    </div>
+</section>
+
+<footer th:replace="fragments/footer :: footer"></footer>
+
+<div class="upstairs">
+    <a href="#header"><i class="fa fa-angle-up"></i></a>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+<script src="/libs/magnific-popup/jquery.magnific-popup.min.js"></script>
+<script src="/js/common.js"></script>
+<script src="/js/comment.js"></script>
+</body>
+</html>

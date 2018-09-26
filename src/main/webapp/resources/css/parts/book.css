@@ -1,0 +1,48 @@
+
+/* Страница с книгой */
+.pagesbook{
+    padding-bottom: 30px;
+    padding-left:30px;
+    padding-right:30px;
+}
+.pagesbook .photo {
+    float: left;
+}
+
+.pagesbook .photo img{
+    width: 150px;
+}
+
+.pagesbook .descr {
+    margin-right:20px;
+    width: 75%;
+    font-size:15px;
+    float: right;
+}
+
+.pagesbook .descr p{
+    margin-top:0;
+}
+
+.pagesbook .link{
+    margin-top:15px;
+}
+
+.pagesbook .authors{
+    margin-top: -2px;
+}
+
+.pagesbook .reviews{
+    margin-top:5px;
+    margin-bottom: 10px;
+    padding: 0 30px 30px;
+    border:1px solid #CCCCCC;
+    border-radius: 5px;
+    background-color: #fafafa;
+}
+
+.pagesbook .reviews h3{
+    font-family:'Roboto', sans-serif;
+    font-weight:bold;
+    margin-bottom:6px;
+}

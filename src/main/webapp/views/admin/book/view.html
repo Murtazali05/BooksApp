@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org/"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+
+<head th:replace="fragments/head :: head(title='Административная панель')"></head>
+
+<body>
+
+<header th:replace="fragments/header :: header"></header>
+
+<section class="main_content">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-3">
+                <div th:replace="admin/menu :: menu (user=${user})"></div>
+            </div>
+            <div class="col-md-9">
+                <div class="content clearfix">
+                    <h2>Список книг</h2>
+
+                    <div class="admin_add_button"><a href="/admin/book/edit" class="">Добавить книгу</a></div>
+
+                    <table class="admin_table">
+                        <tr>
+                            <th>Фото</th>
+                            <th>Заголовок</th>
+                            <th>Описание</th>
+                            <th>Издано</th>
+                            <th></th>
+                        </tr>
+
+                        <tr th:each="book: ${books}">
+                            <td class="td_img"><img th:src="@{/images/book/{pic}(pic=${book.pic})}" alt="alt" /></td>
+                            <td th:text="${book.title}"></td>
+                            <td th:text="${book.description.substring(0, 150) + '...'}"></td>
+
+                            <td th:text="${book.pubyear}"></td>
+                            <td class="td_link">
+                                <a th:href="@{/admin/book/edit/(id=${book.id})}"><i class="fa fa-pencil" aria-hidden="true"></i></a>&nbsp;
+                                <a th:href="@{/admin/book/delete/{id}(id=${book.id})}"><i class="fa fa-trash" aria-hidden="true"></i></a>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<footer th:replace="fragments/footer :: footer"></footer>
+
+<div class="upstairs">
+    <a href="#header"><i class="fa fa-angle-up"></i></a>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+<script src="/libs/magnific-popup/jquery.magnific-popup.min.js"></script>
+<script src="/js/common.js"></script>
+</body>
+</html>

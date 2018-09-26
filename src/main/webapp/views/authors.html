@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org/">
+
+<head th:replace="fragments/head :: head(title='Авторы')"></head>
+
+<body>
+
+<header th:replace="fragments/header :: header"></header>
+
+<section class="main_content">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-9">
+                <div class="content clearfix">
+                    <h2>Авторы</h2>
+
+                    <div class="author" th:each="author : ${authors}">
+                        <a th:href="@{/author/{id}(id=${author.id})}">
+                            <img th:src="@{/images/authors/{pic}(pic=${author.pic})}" alt="alt" />
+                            <div class="author_inf">
+                                <p th:text="${author.fio}"></p>
+                            </div>
+                            <div class="count_book">
+                                <p th:inline="text">Книг: [[${author.countBook}]]</p>
+                            </div>
+                        </a>
+                    </div>
+
+                    <div class="reviews_bottom"></div>
+
+                </div>
+            </div>
+
+            <div class="col-md-3">
+                <aside class="sidebar clearfix">
+                    <nav class="main_menu">
+                        <ul>
+                            <ul>
+                                <li th:each="category : ${categories}"><a th:href="@{/{url}(url=${category.urlCategory})}" th:text="${category.name}"></a></li>
+                            </ul>
+                        </ul>
+                    </nav>
+                </aside>
+            </div>
+        </div>
+    </div>
+</section>
+
+<footer th:replace="fragments/footer :: footer"></footer>
+
+<div class="upstairs">
+    <a href="#header"><i class="fa fa-angle-up"></i></a>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+<script src="/libs/magnific-popup/jquery.magnific-popup.min.js"></script>
+<script src="/js/common.js"></script>
+</body>
+</html>

@@ -1,0 +1,75 @@
+<header id="header" xmlns:sec="http://www.thymeleaf.org/extras/spring-security"
+        xmlns:th="http://www.w3.org/1999/xhtml">
+
+    <a sec:authorize="hasAnyRole('ADMIN', 'MODERATOR')" href="/admin" class="admin"></a>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-md-2">
+                <div class="logo">
+                    <h3><a href="/"><i class="fa fa-book" aria-hidden="true"></i>Book.ru</a></h3>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <nav class="top_mnu">
+                    <ul>
+                        <li><a href="/">Книги</a></li>
+                        <li><a href="/reviews">Рецензии</a></li>
+                        <li><a href="/authors">Авторы</a></li>
+                        <li><a href="/people">Люди</a></li>
+                        <li><a href="/blog">Блог</a></li>
+                    </ul>
+                </nav>
+            </div>
+
+            <div class="col-md-4">
+                <a sec:authorize="!isAuthenticated()" href="#auth" class="auth_buttons clearfix auth_magnific">
+                    <i class="fa fa-user" aria-hidden="true"></i>
+                </a>
+                <div sec:authorize="isAuthenticated()" class="link-user">
+                    <a href="/user">
+                        <span th:text="${user.name}"></span>
+                        <img th:src="@{/images/avatar/{pic}(pic=${user.linkAvatarka})}" alt="alt" />
+                    </a>
+                </div>
+
+                <div class="hidden">
+                    <div id="auth" class="auth_forms">
+                        <div class="modal-box-content">
+                            <button title="Close (Esc)" type="button" class="mfp-close">×</button>
+                            <form action="/login" method="POST">
+                                <h3>Вход</h3>
+                                <input type="email" name="email" placeholder="E-mail" required="required" />
+                                <br />
+                                <input type="password" name="password" placeholder="Пароль" required="required" />
+                                <br />
+                                <button type="submit" name="do_login" class="button">Войти</button>
+
+                                <a href="#" class="link-forgot">Забыли пароль?</a>
+                            </form>
+                            <p>
+                                НЕТ АККАУНТА НА САЙТЕ?<br />
+                                <a href="/registration">Зарегистрироваться</a>
+                            </p>
+                            <hr />
+                            <div class="soc_buttons">
+                                Через соц. сеть:
+                                <a href="#">
+                                    <i class="fa fa-vk" aria-hidden="true"></i>
+                                </a>
+                                <a href="#">
+                                    <i class="fa fa-facebook-square" aria-hidden="true"></i>
+                                </a>
+                                <a href="#">
+                                    <i class="fa fa-twitter-square" aria-hidden="true"></i>
+                                </a>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</header>

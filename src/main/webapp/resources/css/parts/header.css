@@ -1,0 +1,144 @@
+header{
+    height:60px;
+    width:100%;
+    background-color: #1BB8D7;
+}
+
+.admin {
+    background: url(/images/admin.png) no-repeat;
+    width: 77px;
+    height: 67px;
+    position: absolute;
+    z-index: 10;
+    left: 0;
+    top: 60px;
+}
+
+header .logo{
+    color: #FFFFFF;
+    margin-top: 16px;
+}
+header .logo h3{
+    margin: 0;
+    padding: 0;
+}
+
+header .logo h3 a{
+    font-weight: normal;
+    font-size: 21px;
+    color: #FFFFFF;
+}
+header .logo h3 a:hover{
+    color: #f8f8f8;
+}
+
+header .logo h3 a i.fa{
+    margin-right:7px;
+    font-size:22px;
+}
+
+header .top_mnu{
+    margin-top: 18px;
+    text-align: center;
+}
+
+header .top_mnu ul li{
+    display: inline-block;
+}
+
+header .top_mnu ul li a{
+    color: #eeeeee;
+    font-size: 18px;
+    margin-left: 25px;
+}
+
+header .top_mnu ul li a:hover{
+    text-decoration: underline;
+}
+
+header .auth_buttons{
+    color: #FFFFFF;
+    background-color: transparent;
+    border: none;
+    font-size: 25px;
+    float: right;
+    margin-top: 13px;
+}
+
+.auth_forms{
+    background-color: #FFFFFF;
+    margin: auto;
+    max-width: 340px;
+    text-align: center;
+}
+
+.auth_forms h3{
+    text-transform: uppercase;
+    font-weight: normal;
+    padding-top: 34px;
+    margin-top: 0;
+    margin-bottom: 15px;
+}
+
+.auth_forms input{
+    margin-bottom: 11px;
+    width: 240px;
+    height: 38px;
+    border: 1px solid #adadad;
+    border-radius: 3px;
+    outline: none;
+    padding-left: 8px;
+
+}
+
+.content .auth_page{
+    border: 1px solid #eeeeee;
+    margin-top:50px;
+    margin-bottom:50px;
+}
+
+.modal-box-content{
+    position: relative;
+}
+
+.auth_forms .button {
+    margin-right: 16px;
+    margin-left: -4px;
+}
+
+header .link-user{
+    height: 60px;
+    float: right;
+
+}
+
+header .link-user a {
+    display: inline-block;
+    color: #fafafa;
+    vertical-align: middle;
+    height: 100%;
+    padding-top: 14px;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+header .link-user a:hover{
+    transition: .3s;
+    background-color: #26A4CA;
+}
+
+header .link-user a span{
+    margin-right: 4px;
+    padding-top: 5px;
+}
+
+header .link-user a img{
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+}
+
+header .link-user a img, header .link-user a span{
+    display: inline-block;
+    vertical-align: middle;
+}

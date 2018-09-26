@@ -1,0 +1,97 @@
+.button {
+    border: none;
+    outline: none;
+    display: inline-block;
+    color: #FFFFFF;
+    text-decoration: none;
+    user-select: none;
+    background: rgb(212,75,56);
+    padding: 7px 25px;
+    border-radius: 5px;
+}
+
+.button:hover {
+    background: rgb(232,95,76);
+}
+
+.button:active {
+    background: rgb(152,15,0);
+}
+
+/*зеленая кнопка*/
+.green_button {
+    border: none;
+    outline: none;
+    display: inline-block;
+    color: #fafafa;
+    text-decoration: none;
+    user-select: none;
+    background: #00A070;
+    padding-top: 9px;
+    padding-bottom: 9px;
+    width: 300px;
+    border-radius: 5px;
+}
+
+.green_button:hover{
+    background: #00b383;
+}
+
+
+/* Кнопки */
+.animate
+{
+    transition: all 0.1s;
+    -webkit-transition: all 0.1s;
+}
+
+.action-button
+{
+    position: relative;
+    padding: 5px 30px;
+    margin: 0 10px 10px 0;
+    float: left;
+    border-radius: 10px;
+    font-family: 'Pacifico', cursive;
+    font-size: 20px;
+    color: #FFFFFF;
+    text-decoration: none;
+}
+
+.blue
+{
+    z-index: 100;
+    display: block;
+    cursor: pointer;
+    background-color: #3498DB;
+    border-bottom: 5px solid #2980B9;
+    text-shadow: 0 -2px #2980B9;
+}
+
+.red
+{
+    background-color: #E74C3C;
+    border-bottom: 5px solid #BD3E31;
+    text-shadow: 0 -2px #BD3E31;
+}
+
+.green
+{
+    background-color: #82BF56;
+    border-bottom: 5px solid #669644;
+    text-shadow: 0 -2px #669644;
+}
+
+.yellow
+{
+    background-color: #F2CF66;
+    border-bottom: 5px solid #D1B358;
+    text-shadow: 0px -2px #D1B358;
+}
+
+.action-button:active
+{
+    transform: translate(0px,5px);
+    -webkit-transform: translate(0px,5px);
+    border-bottom: 1px solid;
+}

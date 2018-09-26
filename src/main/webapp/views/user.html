@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org/">
+
+<head th:replace="fragments/head :: head(title=${user.name})"></head>
+
+<body>
+
+<header th:replace="fragments/header :: header"></header>
+
+<section class="main_content">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-3">
+
+                <nav th:replace="fragments/nav-user :: nav-user (user=${user}, shelves=${shelves})"></nav>
+
+            </div>
+            <div class="col-md-9">
+                <div class="content clearfix">
+
+                    <h2>Общая информация</h2>
+
+                    <table class="user_info">
+                        <tr th:if="${user.name} != null">
+                            <th><span>Имя:</span></th>
+                            <th th:text="${user.name}"></th>
+                        </tr>
+
+                        <tr th:if="${user.email} != null">
+                            <th><span>Email:</span></th>
+                            <th th:text="${user.email}"></th>
+                        </tr>
+
+                        <tr th:if="${user.birthday} != null">
+                            <th><span>Дата рождения:</span></th>
+                            <th th:text="${user.birthday}"></th>
+                        </tr>
+
+                        <tr>
+                            <th><span>Прочитано:</span></th>
+                            <th th:inline="text">[[${countReadBook}]] книг</th>
+                        </tr>
+                    </table>
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<footer th:replace="fragments/footer :: footer"></footer>
+
+<div class="upstairs">
+    <a href="#header"><i class="fa fa-angle-up"></i></a>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+<script src="/libs/magnific-popup/jquery.magnific-popup.min.js"></script>
+<script src="/js/common.js"></script>
+</body>
+</html>
